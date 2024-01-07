@@ -1,0 +1,20 @@
+﻿@model IndexViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form asp-action="Index">
+        <input asp-for="Name" />
+        <button type="submit">WHY</button>
+    </form>
+
+    @if (Model.Name != null && Model.CountryResponse != null && Model.CountryFlagResponse != null && Model.CountryFlagResponse.Any())
+    {
+        <p>@Model.CountryResponse.Count</p>
+        @for (var i = 0; i < Model.CountryResponse.Country.Count; i++)
+        {
+            <p>Country: @Model.CountryFlagResponse[i].Name.Common </p>
+            <p>Country Code: @Model.CountryResponse.Country[i].Id </p>
+            <p>Probability: @Model.CountryResponse.Country[i].Probability </p>
+        }
+    }
+</div>
